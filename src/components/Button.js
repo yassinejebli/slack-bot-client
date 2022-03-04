@@ -18,7 +18,16 @@ export default styled.button`
     props.variant === "primary" &&
     css`
       background-color: rgb(36, 139, 210);
-      border: none;
+      border-color: rgb(36, 139, 210);
+      color: white;
+    `}
+
+  // primary
+  ${(props) =>
+    props.variant === "danger" &&
+    css`
+      background-color: rgb(212, 94, 94);
+      border-color: rgb(212, 94, 94);
       color: white;
     `}
 
