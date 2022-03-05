@@ -1,11 +1,15 @@
-import Users from "./containers/Users";
+import Box from "./components/Box";
+import { Users, AddUser } from "./containers/users";
 import ReactQueryProvider from "./providers/ReactQueryProvider";
 
 function App() {
   return (
     <main>
       <ReactQueryProvider>
-        <Users />
+        <AddUser />
+        <Box mt={4}>
+          <Users />
+        </Box>
       </ReactQueryProvider>
     </main>
   );

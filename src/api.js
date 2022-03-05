@@ -3,10 +3,14 @@ import axios from "axios";
 const ENDPOINT_ROOT = process.env.REACT_APP_ENDPOINT_ROOT;
 
 // TODO: pagination
-export function getUsers() {
-  return axios.get(`${ENDPOINT_ROOT}/users`).then((response) => response.data);
+export async function getUsers() {
+  return (await axios.get(`${ENDPOINT_ROOT}/users`)).data;
 }
 
-export function deleteUser(userId, teamId) {
-  return axios.delete(`${ENDPOINT_ROOT}/users`).then((response) => response.ok);
+export function deleteUser(userId) {
+  return axios.delete(`${ENDPOINT_ROOT}/users/${userId}`);
+}
+
+export function inviteUser(data) {
+  return axios.post(`${ENDPOINT_ROOT}/users`, data);
 }

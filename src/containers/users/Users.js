@@ -1,40 +1,48 @@
 import { useMutation, useQuery } from "react-query";
-import api from "../api";
-import Avatar from "../components/Avatar";
-import Table from "../components/Table";
-import Button from "../components/Button";
-import Alert from "../components/Alert";
+import * as api from "../../api";
+import Avatar from "../../components/Avatar";
+import Table from "../../components/Table";
+import Button from "../../components/Button";
+import Alert from "../../components/Alert";
+import { getErrorMessageOnDeleteOrInvite } from "./helpers";
 
-// TODO: handle fetching errors
 export default function Users() {
   const { data, isLoading } = useQuery("users-data", api.getUsers, {
     initialData: [],
   });
-  const [deleteUser, { error }] = useMutation(api.deleteUser);
-
+  const { mutate: deleteUser, error: deleteError } = useMutation(
+    api.deleteUser
+  );
   const handleDeleteUser = (user) => {
     if (window.confirm(`Do you really want to delete "${user.name}" user`)) {
-      // administrative permissions needed for app.client.admin.users.remove method (Apps with this feature are only available to Enterprise customers)
-      deleteUser(user.id, user.team_id);
+      // administrative permissions needed for app.client.admin.users.remove method but Apps with this feature are only available to Enterprise customers
+      deleteUser(user.id);
     }
   };
 
   if (isLoading) return <div>Loading...</div>;
-
   return (
     <>
-      {error && <Alert variant="error"></Alert>}
+      {deleteError && (
+        <Alert variant="error">
+          {getErrorMessageOnDeleteOrInvite(deleteError.response.data?.data)}
+        </Alert>
+      )}
       <Table>
         <thead>
-          <th>Image</th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Real Name</th>
-          <th />
+          <tr>
+            <th>Image</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Real Name</th>
+            <th>Email Confirmed</th>
+            <th />
+          </tr>
         </thead>
         <tbody>
           {data.map((user) => {
-            const hideDeleteButton = user.is_bot || user.is_admin;
+            const hideDeleteButton =
+              user.is_bot || user.is_admin || user.deleted;
             return (
               <tr key={user.id}>
                 <td>
@@ -47,6 +55,7 @@ export default function Users() {
                 <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.real_name}</td>
+                <td>{user.is_email_confirmed ? "Yes" : "No"}</td>
                 <td>
                   {!hideDeleteButton && (
                     <Button
