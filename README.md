@@ -1,3 +1,6 @@
+![](https://recordit.co/uQe72FLulb)
+![](https://recordit.co/lnp21H7Lig)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

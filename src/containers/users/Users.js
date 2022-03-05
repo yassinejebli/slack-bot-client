@@ -31,7 +31,7 @@ export default function Users() {
       <Table>
         <thead>
           <tr>
-            <th>Image</th>
+            <th>Picture</th>
             <th>ID</th>
             <th>Name</th>
             <th>Real Name</th>
