@@ -1,5 +1,7 @@
-![](https://recordit.co/uQe72FLulb)
-![](https://recordit.co/lnp21H7Lig)
+# Demo (GIF)
+
+https://recordit.co/uQe72FLulb \
+https://recordit.co/lnp21H7Lig
 
 # Getting Started with Create React App
 
