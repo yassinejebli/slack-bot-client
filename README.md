@@ -1,7 +1,12 @@
 # Demo (GIF)
 
-https://recordit.co/uQe72FLulb \
+https://recordit.co/ZKEPCYv8Ul \
 https://recordit.co/lnp21H7Lig
+
+# Server
+
+https://github.com/yassinejebli/slack-bot-jobs
+deployed at: https://shadowed-nova-doom.glitch.me
 
 # Getting Started with Create React App
 
