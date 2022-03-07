@@ -14,3 +14,7 @@ export function deleteUser(userId) {
 export function inviteUser(data) {
   return axios.post(`${ENDPOINT_ROOT}/users`, data);
 }
+
+export function sendMessage(data) {
+  return axios.post(`${ENDPOINT_ROOT}/message-general`, data);
+}

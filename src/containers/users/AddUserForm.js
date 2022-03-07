@@ -23,6 +23,7 @@ export default function AddUser() {
 
   return (
     <>
+      <h3>Invite a person (workspace: workspace-yj)</h3>
       {inviteError && (
         <Box mb={2}>
           <Alert variant="error">
